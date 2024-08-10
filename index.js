@@ -1,25 +1,29 @@
 const visitDiv = document.getElementById('wpsvctotal');
+  const targetElement = document.querySelector('.e-con.e-flex>.e-con-inner');
+const layoutRight =  document.getElementById('sectionForShowTotalUser')
 
 // Directly access the text content of the div
-let textContent = visitDiv.textContent;
+let textContent = visitDiv.textContent; //here example result display: Total Users 46
 
 // Replace the text
-let newText = textContent.replace('Total Users : ', 'Unsere Online Gäste');
+let getnumber = textContent.replace('Total Users : ', ' ');
+let textToNumber = parseInt(getnumber);
 
-// Update the div's text content
-visitDiv.innerHTML = newText;
+if (textToNumber > 100) {
+  // Update the div's text content
+  console.log('up to 1000');
+  layoutRight.setAttribute('style', 'display: inline !important;');
+  visitDiv.innerHTML = `<span style='color:#fff'>Unsere Online Gäste ${textToNumber}</span>`;
+}
+ else {
+ layoutRight.remove();
 
-console.log(newText);
+  // Get a reference to the element you want to style
 
 
-  document.getElementById('sectionForShowTotalUser').remove();
+ // Apply the desired styles
+  targetElement.style.justifyContent = 'center';
+}
 
-
-// const visitDiv = document.getElementById('wpsvctotal');
-
-// const textContent = visitDiv.textContent;
-// let newText = textContent.replace("Users Today : ", "Unsere Online Gäste ");
-// visitDiv.textContent = newText;
-
-// console.log(newText);
-
+// If you want to log the updated text content, do this:
+console.log(textToNumber);
